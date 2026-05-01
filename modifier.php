@@ -3,7 +3,7 @@ require 'connexion.php';
 
 $id = (int)($_GET['id'] ?? 0);
 
-// Récupérer l'étudiant
+
 $stmt = $conn->prepare("SELECT * FROM etudiants WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -14,7 +14,7 @@ if (!$etudiant) {
     exit;
 }
 
-// Modifier l'étudiant
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $id      = (int)$_POST['id'];
     $nom     = trim($_POST['nom']);
